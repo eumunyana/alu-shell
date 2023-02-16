@@ -8,11 +8,11 @@ if [ -z"$command" ]; then
 	{start|stop|restart}"
 		exit
 fi
-if ["$command" == "start" ]; then
+if [ "$command" == "start" ]; then
 	bash ./manage_my_process &
 	echo "$1" > /var/run/my_process.pid
 	echo "manage_my_process started"
-elif ["$command" == "stop" ]; then
+elif [ "$command" == "stop" ]; then
 	[ -e"/var/run/my_process.pid" ] && pkill -f './manage_my_process' && rm /var/run/my_process.pid
 	echo "manage_my_process stopped"
 elif [ "$command" == "restart" ]; then
